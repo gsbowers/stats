@@ -47,8 +47,8 @@ pro stats_norm_prob_plot, data
 	oplot, GU, GU
 	xyouts, 0.3,0.8, string(format='(%"corr(x,y)=%6.4g")',correlate(Z, GU)), /normal, charsize=1.5 
 
-print, "compare corr(x,y) to critical values of Normal PCC Distribution:"
-print, "http://www.itl.nist.gov/div898/handbook/eda/section3/eda3676.htm"
+	print, "compare corr(x,y) to critical values of Normal PCC Distribution:"
+	print, "http://www.itl.nist.gov/div898/handbook/eda/section3/eda3676.htm"
 
 
 
