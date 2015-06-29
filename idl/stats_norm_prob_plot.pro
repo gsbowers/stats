@@ -24,16 +24,17 @@ pro stats_norm_prob_plot, data
 
 	n = n_elements(data)
 
-  ;define uniform order statistic medians
+	;define uniform order statistic medians
 	U = dblarr(n)
 
 	U[0] = 1-0.5^(1.0d/n)	
 	U[-1] = 0.5^(1.0d/n)
 	for i=1,n-2 do $ 
-		U[i] = (i-0.3175)/(n+0.365d)
+		U[i] = (i+1-0.3175)/(n+0.365d)
 
 	;define normal order statistic medians
 	GU = stats_inv_normalcdf(U)
+	;GU = stats_ltqnorm(U)
 
 	;create ordered response values 
 	Z = (data-mean(data))/stddev(data)
@@ -44,5 +45,12 @@ pro stats_norm_prob_plot, data
 		ytitle='Ordered Response', title='Normal Probability Plot', $
 		psym=1, charsize=1.8
 	oplot, GU, GU
+	xyouts, 0.3,0.8, string(format='(%"corr(x,y)=%6.4g")',correlate(Z, GU)), /normal, charsize=1.5 
+
+print, "compare corr(x,y) to critical values of Normal PCC Distribution:"
+print, "http://www.itl.nist.gov/div898/handbook/eda/section3/eda3676.htm"
+
+
+
 
 end
