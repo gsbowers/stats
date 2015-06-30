@@ -1,5 +1,5 @@
 ;+
-; Procedure: stats_qqplot
+; Procedure: stats_outliers
 ;
 ; Purpose:
 ;   finds outliers for given data set using generalized (extreme 
