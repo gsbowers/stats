@@ -6,7 +6,7 @@
 ;   studentized deviate) ESD test with hampel identifier 
 ;
 ; Inputs: 
-;   data: data consisting of gaussian background and outliers
+;   data: array consisting of gaussian background and outliers
 ;   k: max number of outliers to look for
 ; 
 ; Output: 
@@ -73,7 +73,7 @@ function stats_outliers, data, k, alpha=alpha
 
 	;compare test statistics to critical values
 	test = rmax - lambda
-	w = where(test gt 0, count) ;find outliers
+	w = where(test gt 0, count, /L64) ;find outliers
 
 	if count ne 0 then begin
 		return, datai[w] 
