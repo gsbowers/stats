@@ -60,8 +60,8 @@ function stats_outliers, data, k, alpha=alpha
 
 	;compute test statistics		
 	r = abs(data-median(data))/mad
-	rmax = reverse((r(sort(r)))[-k:-1]) ;get k values that maximize r
-	datai = reverse((sort(r))[-k:-1]) ;associated data indices
+	rmax = reverse((r(sort(r,/L64)))[-k:-1]) ;get k values that maximize r
+	datai = reverse((sort(r,/L64))[-k:-1]) ;associated data indices
 
 	;compute critical values
 	lambda = dblarr(k)
